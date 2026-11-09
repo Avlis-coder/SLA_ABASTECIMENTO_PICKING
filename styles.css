@@ -185,10 +185,3 @@ td .empty { text-align: center; }
   .chart text { font-size: 15px; }
   .chart .chart-value { font-size: 14px; }
 }
-
-.data-setup { max-width: 640px; margin-bottom: 20px; }
-.data-setup h2 { font-size: 19px; letter-spacing: -.025em; }
-.data-setup p { margin-top: 6px; color: var(--muted); }
-.data-setup label { margin-top: 15px; color: #445870; font-size: 12px; font-weight: 660; }
-.data-setup input { width: 100%; height: auto; padding: 8px; margin-top: 4px; }
-.data-setup #data-error { color: var(--red); }

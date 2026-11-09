@@ -6,8 +6,8 @@
   <meta name="description" content="Indicadores de abastecimento do picking e cumprimento do SLA de 24 horas.">
   <title>SLA de abastecimento do picking | Centro Elétrico</title>
   <link rel="stylesheet" href="styles.css">
-  <meta http-equiv="Content-Security-Policy" content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'">
-  <script src="load-data.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Ir para o conteúdo</a>
@@ -17,7 +17,7 @@
         <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z M4.3 7.7 12 12l7.7-4.3M12 12v9M8 5.25l8 4.5" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/></svg></span>
         <span>Centro Elétrico<small>Logística</small></span>
       </span>
-      <a class="top-link" data-requires-data hidden href="#metodologia">Critérios do SLA</a>
+      <a class="top-link" href="#metodologia">Critérios do SLA</a>
     </div>
   </header>
   <main id="conteudo" class="shell">
@@ -27,18 +27,10 @@
         <h1>SLA de abastecimento</h1>
         <p class="subtitle">Acompanhe o prazo dos mapas e o atendimento das solicitações.</p>
       </div>
-      <div class="period" data-requires-data hidden><span class="period-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4zM4 11h16M8 4v5m8-5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><small>Período da base</small><strong id="base-period">Carregando…</strong></div></div>
+      <div class="period"><span class="period-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4zM4 11h16M8 4v5m8-5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><small>Período da base</small><strong id="base-period">Carregando…</strong></div></div>
     </div>
 
-    <section class="card data-setup" id="data-setup" aria-labelledby="data-title">
-      <h2 id="data-title">Carregar dados do painel</h2>
-      <p>Selecione <strong>Dados_SLA_Picking.json</strong> para abrir os indicadores. O arquivo é lido no navegador.</p>
-      <label for="data-file">Arquivo de dados</label>
-      <input id="data-file" type="file" accept=".json,application/json" aria-describedby="data-status data-error">
-      <p id="data-status" role="status"></p>
-      <p id="data-error" role="alert" hidden></p>
-    </section>
-    <form id="filters" data-requires-data hidden class="filters" aria-label="Filtros do painel">
+    <form id="filters" class="filters" aria-label="Filtros do painel">
       <label><span>Mês de criação</span><select id="month"><option value="">Todos os meses</option></select></label>
       <label><span>Tipo de mapa</span><select id="type"><option value="">Todos os tipos</option></select></label>
       <label><span>Categoria</span><select id="category"><option value="">Todas as categorias</option></select></label>
@@ -46,7 +38,7 @@
       <button id="reset" class="button secondary" type="button">Limpar filtros</button>
     </form>
 
-    <nav class="tabs" data-requires-data hidden aria-label="Seções do painel">
+    <nav class="tabs" aria-label="Seções do painel">
       <button type="button" data-view="overview" aria-current="page">Visão geral</button>
       <button type="button" data-view="months">Por mês</button>
       <button type="button" data-view="categories">Categorias</button>
@@ -55,14 +47,14 @@
       <button type="button" data-view="items">Itens</button>
     </nav>
 
-    <div id="view" data-requires-data hidden tabindex="-1" aria-live="off"><p class="empty" role="status">Carregando indicadores…</p></div>
+    <div id="view" tabindex="-1" aria-live="off"><p class="empty" role="status">Carregando indicadores…</p></div>
     <noscript><p class="empty">Ative o JavaScript do navegador para visualizar o painel.</p></noscript>
 
-    <details class="method" data-requires-data hidden id="metodologia">
+    <details class="method" id="metodologia">
       <summary>Critérios de cálculo e qualidade dos dados</summary>
       <div id="method-content"></div>
     </details>
-    <footer class="footer" data-requires-data hidden><span>Centro Elétrico · Abastecimento do picking</span><span id="cutoff"></span></footer>
+    <footer class="footer"><span>Centro Elétrico · Abastecimento do picking</span><span id="cutoff"></span></footer>
   </main>
 </body>
 </html>

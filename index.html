@@ -7,6 +7,7 @@
   <title>SLA de abastecimento do picking | Centro Elétrico</title>
   <link rel="stylesheet" href="styles.css">
   <script src="data.js" defer></script>
+  <script src="productivity.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -15,37 +16,40 @@
     <div class="shell top-inner">
       <span class="brand">
         <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z M4.3 7.7 12 12l7.7-4.3M12 12v9M8 5.25l8 4.5" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/></svg></span>
-        <span>Centro Elétrico<small>Logística</small></span>
+        <span>Centro Elétrico<small>Operações logísticas</small></span>
       </span>
-      <a class="top-link" href="#metodologia">Critérios do SLA</a>
+      <a class="top-link" href="#metodologia"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8v.1"/></svg>Critérios do SLA</a>
     </div>
   </header>
   <main id="conteudo" class="shell">
     <div class="heading">
       <div>
-        <p class="eyebrow">GESTÃO DO PICKING</p>
-        <h1>SLA de abastecimento</h1>
-        <p class="subtitle">Acompanhe o prazo dos mapas e o atendimento das solicitações.</p>
+        <p class="eyebrow">DESEMPENHO OPERACIONAL</p>
+        <h1>Abastecimento do picking</h1>
+        <p class="subtitle">Acompanhe o SLA de 24 horas dos mapas e o abastecimento dos itens.</p>
       </div>
       <div class="period"><span class="period-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4zM4 11h16M8 4v5m8-5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><small>Período da base</small><strong id="base-period">Carregando…</strong></div></div>
     </div>
 
-    <form id="filters" class="filters" aria-label="Filtros do painel">
-      <label><span>Mês de criação</span><select id="month"><option value="">Todos os meses</option></select></label>
-      <label><span>Tipo de mapa</span><select id="type"><option value="">Todos os tipos</option></select></label>
-      <label><span>Categoria</span><select id="category"><option value="">Todas as categorias</option></select></label>
-      <label><span>Operador</span><select id="operator"><option value="">Todos os operadores</option></select></label>
-      <button id="reset" class="button secondary" type="button">Limpar filtros</button>
-    </form>
-
     <nav class="tabs" aria-label="Seções do painel">
-      <button type="button" data-view="overview" aria-current="page">Visão geral</button>
-      <button type="button" data-view="months">Por mês</button>
-      <button type="button" data-view="categories">Categorias</button>
-      <button type="button" data-view="operators">Operadores</button>
-      <button type="button" data-view="maps">Mapas</button>
-      <button type="button" data-view="items">Itens</button>
+      <button type="button" data-view="overview" aria-current="page"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>Indicadores</button>
+      <button type="button" data-view="details"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16M9 10v9M9 14h11"/></svg>Detalhamento</button>
+      <button type="button" data-view="productivity"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5v14h16M8 15l4-4 3 2 5-6m-4 0h4v4"/></svg>Produtividade</button>
     </nav>
+
+    <form id="filters" class="filters" aria-labelledby="filters-title">
+      <div class="filters-head">
+        <h2 id="filters-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/><path class="filter-knobs" d="M8 5v4m8 1v4m-6 1v4"/></svg>Filtros do painel</h2>
+        <button id="reset" class="button secondary" type="button">Limpar filtros</button>
+      </div>
+      <div class="filter-fields">
+        <label><span id="month-label">Mês de criação</span><select id="month"><option value="">Todos os meses</option></select></label>
+        <label><span>Tipo de mapa</span><select id="type"><option value="">Todos os tipos</option></select></label>
+        <div class="category-field"><span id="category-label">Categoria</span><select id="category" aria-labelledby="category-label"><option value="">Todas as categorias</option></select></div>
+        <label><span>Operador</span><select id="operator"><option value="">Todos os operadores</option></select></label>
+      </div>
+      <div id="active-filters" class="active-filters"></div>
+    </form>
 
     <div id="view" tabindex="-1" aria-live="off"><p class="empty" role="status">Carregando indicadores…</p></div>
     <noscript><p class="empty">Ative o JavaScript do navegador para visualizar o painel.</p></noscript>
